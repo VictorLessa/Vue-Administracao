@@ -1,0 +1,61 @@
+<template>
+<v-app>
+  <!-- drawer -->
+  <app-drawer app :drawer="drawer"></app-drawer>
+
+  <!-- toolbar -->
+  <v-toolbar fixed dark color="primary">
+    <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+    <v-toolbar-title class="white--text">Title</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-btn icon>
+      <v-icon>search</v-icon>
+    </v-btn>
+    <v-btn icon>
+      <v-icon>apps</v-icon>
+    </v-btn>
+    <v-btn icon>
+      <v-icon>refresh</v-icon>
+    </v-btn>
+    <v-btn icon>
+      <v-icon>more_vert</v-icon>
+    </v-btn>
+  </v-toolbar>
+
+  <!-- views -->
+  <v-content>
+    <v-container fluid>
+      <router-view></router-view>
+    </v-container>
+  </v-content>
+  <v-footer app></v-footer>
+</v-app>
+</template>
+
+<script>
+import AppToolbar from '@/components/AppToolbar'
+import AppDrawer from '@/components/AppDrawer'
+export default {
+  name: 'App',
+  data () {
+    return {
+      drawer: false
+    }
+  },
+  components: {
+    AppToolbar,
+    AppDrawer
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
