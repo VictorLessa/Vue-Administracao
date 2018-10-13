@@ -1,36 +1,42 @@
-<template>
-<v-app>
-  <!-- drawer -->
-  <app-drawer app :drawer="drawer"></app-drawer>
+  <template v-if="!$route.meta.public">
+    <v-app>
+      <!-- drawer -->
+      <app-drawer app :drawer="drawer"></app-drawer>
 
-  <!-- toolbar -->
-  <v-toolbar fixed dark color="primary">
-    <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-    <v-toolbar-title class="white--text">Title</v-toolbar-title>
-    <v-spacer></v-spacer>
-    <v-btn icon>
-      <v-icon>search</v-icon>
-    </v-btn>
-    <v-btn icon>
-      <v-icon>apps</v-icon>
-    </v-btn>
-    <v-btn icon>
-      <v-icon>refresh</v-icon>
-    </v-btn>
-    <v-btn icon>
-      <v-icon>more_vert</v-icon>
-    </v-btn>
-  </v-toolbar>
-
-  <!-- views -->
-  <v-content>
-    <v-container fluid>
-      <router-view></router-view>
-    </v-container>
-  </v-content>
-  <v-footer app></v-footer>
-</v-app>
-</template>
+      <!-- toolbar -->
+      <v-toolbar fixed dark color="primary">
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <v-toolbar-title class="white--text">Title</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon>
+          <v-icon>search</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>apps</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>refresh</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>more_vert</v-icon>
+        </v-btn>
+      </v-toolbar>
+      <!-- views -->
+      <v-content>
+        <v-container fluid>
+          <router-view></router-view>
+        </v-container>
+      </v-content>
+      <v-footer app></v-footer>
+    </v-app>
+  </template>
+  <template v-else>
+    <transition>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </transition>
+  </template>
 
 <script>
 import AppToolbar from '@/components/AppToolbar'
