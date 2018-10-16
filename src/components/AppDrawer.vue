@@ -68,6 +68,8 @@ export default {
   computed: {
     ...mapGetters('auth', ['profileName'])
   },
+  mounted () {
+  },
   props: {
     drawer: false
   }

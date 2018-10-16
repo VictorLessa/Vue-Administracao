@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Dashboard',
   data () {
@@ -92,13 +92,22 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
+  beforeCreate () {
+    // if (!this.$session.exists()) {
+    //   this.$router.push('/login')
+    // }
+  },
   computed: {
-    ...mapState('auth', ['statusUser'])
+    ...mapState('auth', ['details'])
   },
   mounted () {
-    if (this.statusUser === null) {
-      localStorage.removeItem('user')
-      this.$router.push('/login')
+    this.Save()
+  },
+  methods: {
+    ...mapActions('auth', ['getDetails']),
+    Save () {
+      let details = JSON.parse(localStorage.getItem('token'))
+      this.getDetails(details)
     }
   }
 }

@@ -10,7 +10,7 @@ const ALERT_LOGIN = (state, obj) => {
 }
 
 const DETAILS_PHARMACY = (state, obj) => {
-  state.details = obj.data.data
+  state.details = obj
 }
 
 export default {

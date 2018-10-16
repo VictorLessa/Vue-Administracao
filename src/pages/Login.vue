@@ -33,7 +33,6 @@
 import { mapActions, mapState } from 'vuex'
 export default {
   data: () => ({
-    drawer: null,
     email: '',
     password: '',
     error: '',
@@ -49,12 +48,30 @@ export default {
     }
   },
   methods: {
-    ...mapActions('auth', ['loginUser']),
+    ...mapActions('auth', ['loginUser', 'getDetails']),
     login () {
       if (!this.email || !this.password) {
         this.error = 'insirir valor'
       } else {
         this.loginUser({email: this.email, password: this.password})
+          .then(
+            user => {
+              if (user !== undefined) {
+                // this.getDetails(user.data.data)
+                //   .then(
+                //     details => {
+                //       if (details !== undefined) {
+                //         this.$session.set('details', details.data.data)
+                //       }
+                //     }
+                //   )
+                localStorage.setItem('token', JSON.stringify(user.data.data))
+                this.$session.set('jwt', user.data.data)
+                this.$session.start()
+                this.$router.push('/')
+              }
+            }
+          )
       }
     }
   },

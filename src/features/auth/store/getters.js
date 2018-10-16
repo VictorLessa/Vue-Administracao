@@ -1,5 +1,7 @@
 const profileName = state => {
-  return state.details.pharmacy_name
+  if (state.details) {
+    return state.details.pharmacy_name
+  }
 }
 
 export default {
