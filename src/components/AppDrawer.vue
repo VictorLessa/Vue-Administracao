@@ -19,7 +19,7 @@
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            <v-list-tile-title>John Leider</v-list-tile-title>
+            <v-list-tile-title>{{ profileName }}</v-list-tile-title>
           </v-list-tile-content>
 
           <v-list-tile-action>
@@ -51,6 +51,7 @@
 
 <script>
 // import toggleDrawer from '@/mixins/Toggle'
+import { mapGetters } from 'vuex'
 export default {
   name: 'AppDrawer',
   // mixins: [toggleDrawer],
@@ -63,6 +64,9 @@ export default {
       mini: false,
       right: null
     }
+  },
+  computed: {
+    ...mapGetters('auth', ['profileName'])
   },
   props: {
     drawer: false

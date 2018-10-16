@@ -20,7 +20,17 @@ export default [
     meta: {
       public: false
     },
+    redirect: {
+      path: '/dashboard'
+    },
+    name: 'Root'
+  },
+  {
+    path: '/dashboard',
     name: 'Dashboard',
+    meta: {
+      public: false
+    },
     component: () => import(
       `@/pages/Dashboard.vue`
     )

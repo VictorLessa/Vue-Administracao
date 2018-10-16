@@ -9,6 +9,15 @@ const login = async (credential) => {
   return axios.request(config)
 }
 
+const getDetails = async (token) => {
+  let config = {
+    method: 'GET',
+    url: `${process.env.API_URL}/pharmacy/details`,
+    headers: {Authorization: token}
+  }
+  return axios.request(config)
+}
 export default {
-  login
+  login,
+  getDetails
 }

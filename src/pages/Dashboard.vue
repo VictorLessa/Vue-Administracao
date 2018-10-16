@@ -84,11 +84,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'Dashboard',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  computed: {
+    ...mapState('auth', ['statusUser'])
+  },
+  mounted () {
+    if (this.statusUser === null) {
+      localStorage.removeItem('user')
+      this.$router.push('/login')
     }
   }
 }

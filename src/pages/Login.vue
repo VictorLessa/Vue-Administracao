@@ -14,7 +14,7 @@
                 <v-form>
                   <v-text-field v-model="email" prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
                   <v-text-field v-model="password" id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
-                  <v-card>{{ error }}</v-card>
+                      <v-alert :value="value" color="error" icon="warning" outline>{{error}}</v-alert>
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -30,14 +30,24 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   data: () => ({
     drawer: null,
     email: '',
     password: '',
-    error: ''
+    error: '',
+    value: false
   }),
+  computed: {
+    ...mapState('auth', ['alertError'])
+  },
+  watch: {
+    alertError (alertError) {
+      this.value = true
+      this.error = alertError
+    }
+  },
   methods: {
     ...mapActions('auth', ['loginUser']),
     login () {
