@@ -1,8 +1,8 @@
 import webapi from './webapi'
-
+import router from '@/router'
 const loginUser = async ({ commit }, credential) => {
-  const result = await webapi.login(credential)
-  console.log(result)
+  await webapi.login(credential)
+  router.push('/dashboard')
 }
 
 export default {

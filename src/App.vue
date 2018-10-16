@@ -1,4 +1,6 @@
-  <template v-if="!$route.meta.public">
+<template>
+<div>
+  <template v-if="$route.meta.public == false">
     <v-app>
       <!-- drawer -->
       <app-drawer app :drawer="drawer"></app-drawer>
@@ -37,6 +39,18 @@
       </keep-alive>
     </transition>
   </template>
+</div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
 
 <script>
 import AppToolbar from '@/components/AppToolbar'

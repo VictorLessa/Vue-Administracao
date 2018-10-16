@@ -1,7 +1,9 @@
 export default [
   {
     path: '*',
-    redirect: '/'
+    redirect: {
+      path: '/login'
+    }
   },
   {
     path: '/login',
@@ -15,13 +17,9 @@ export default [
   },
   {
     path: '/',
-    name: 'Root',
-    redirect: {
-      name: 'Dashboard'
-    }
-  },
-  {
-    path: '/dashboard',
+    meta: {
+      public: false
+    },
     name: 'Dashboard',
     component: () => import(
       `@/pages/Dashboard.vue`
