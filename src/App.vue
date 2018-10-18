@@ -19,6 +19,7 @@
         <v-btn icon>
           <v-icon>refresh</v-icon>
         </v-btn>
+        <span> ffdf{{ profileName }}</span>
         <v-btn icon>
           <v-icon>more_vert</v-icon>
         </v-btn>
@@ -55,12 +56,16 @@ export default {
 <script>
 import AppToolbar from '@/components/AppToolbar'
 import AppDrawer from '@/components/AppDrawer'
+import { mapGetters } from 'vuex'
 export default {
   name: 'App',
   data () {
     return {
       drawer: false
     }
+  },
+  computed: {
+    ...mapGetters('auth', ['profileName'])
   },
   components: {
     AppToolbar,

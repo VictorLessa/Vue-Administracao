@@ -107,6 +107,7 @@ export default {
     ...mapActions('auth', ['getDetails']),
     Save () {
       let details = JSON.parse(localStorage.getItem('token'))
+      console.log(details)
       this.getDetails(details)
     }
   }

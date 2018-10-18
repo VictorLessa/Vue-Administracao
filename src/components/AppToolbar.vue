@@ -14,6 +14,8 @@
       <v-icon>apps</v-icon>
     </v-btn>
 
+    <span> ffdf{{ profileName }}</span>
+
     <v-btn icon>
       <v-icon>refresh</v-icon>
     </v-btn>
@@ -26,12 +28,16 @@
 
 <script>
 import DrawerToggle from '@/mixins/Toggle'
+import { mapGetters } from 'vuex'
 export default {
   name: 'AppToolbar',
   mixins: [DrawerToggle],
   data () {
     return {
     }
+  },
+  computed: {
+    ...mapGetters('auth', ['profileName'])
   }
 }
 </script>
