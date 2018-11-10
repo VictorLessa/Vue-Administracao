@@ -1,95 +1,51 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+  <div>
+    <vue-apex-charts
+      width='100%'
+      height='350'
+      type='bar'
+      :options='chartOptions'
+      :series='series'
+    ></vue-apex-charts>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import VueApexCharts from 'vue-apexcharts'
+
 export default {
   name: 'Dashboard',
+  components: {
+    VueApexCharts
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      chartOptions: {
+        chart: {
+          id: 'basic-bar',
+          animations: {
+            speed: 200
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        plotOptions: {
+          bar: {
+            distributed: true
+          }
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995]
+        }
+      },
+      series: [
+        {
+          name: 'series-1',
+          data: [30, 40, 45, 30, 49]
+        }
+      ]
     }
   },
   beforeCreate () {
@@ -114,7 +70,7 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
   font-weight: normal;

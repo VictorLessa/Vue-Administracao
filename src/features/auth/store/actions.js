@@ -16,11 +16,7 @@ const loginUser = async ({ commit }, credential) => {
         }
       )
   } catch (error) {
-    if (error.response.status === 401) {
-      commit('ALERT_LOGIN', error.response.data.message)
-    } else if (error.response.status === 500) {
-      commit('ALERT_LOGIN', error.response.data.message)
-    }
+    commit('ALERT_LOGIN', error.response.data.message)
   }
 }
 
