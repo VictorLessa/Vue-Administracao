@@ -8,6 +8,9 @@ import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import store from './store/index'
 import VueSession from 'vue-session'
+import VueApexCharts from 'vue-apexcharts'
+
+Vue.use(VueApexCharts)
 Vue.use(Vuetify)
 Vue.use(VueSession)
 Vue.config.productionTip = false

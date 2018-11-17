@@ -34,5 +34,15 @@ export default [
     component: () => import(
       `@/pages/Dashboard.vue`
     )
+  },
+  {
+    path: '/configure',
+    name: 'configuracao',
+    meta: {
+      public: false
+    },
+    component: () => import(
+      `@/pages/Configure.vue`
+    )
   }
 ]

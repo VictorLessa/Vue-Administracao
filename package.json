@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "apexcharts": "^2.2.0",
+    "npm": "^6.4.1",
     "vue": "^2.5.2",
     "vue-apexcharts": "^1.2.3",
     "vue-router": "^3.0.1"

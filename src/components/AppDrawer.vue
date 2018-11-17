@@ -36,6 +36,7 @@
         <v-list-tile
           v-for="item in items"
           :key="item.title"
+          :to="item.to"
         >
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
@@ -50,16 +51,16 @@
 </template>
 
 <script>
-// import toggleDrawer from '@/mixins/Toggle'
+import toggleDrawer from '@/mixins/Toggle'
 import { mapGetters } from 'vuex'
 export default {
   name: 'AppDrawer',
-  // mixins: [toggleDrawer],
+  mixins: [toggleDrawer],
   data () {
     return {
       items: [
-        { title: 'Home', icon: 'dashboard' },
-        { title: 'About', icon: 'question_answer' }
+        { title: 'Home', to: '/dashboard', icon: 'dashboard' },
+        { title: 'Configurar finanças', to: '/configure', icon: 'question_answer' }
       ],
       mini: false,
       right: null

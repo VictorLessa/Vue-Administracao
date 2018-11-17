@@ -1,51 +1,41 @@
 <template>
-  <div>
-    <vue-apex-charts
-      width='100%'
-      height='350'
-      type='bar'
-      :options='chartOptions'
-      :series='series'
-    ></vue-apex-charts>
-  </div>
+  <v-container>
+    <v-layout row wrap>
+      <v-flex column lg3>
+        <nubank/>
+      </v-flex>
+      <v-flex column lg3>
+      </v-flex>
+      <v-flex column lg3>
+      </v-flex>
+      <v-flex column lg3>
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap>
+      <v-flex column lg6>
+        <donuts/>
+      </v-flex>
+      <v-flex column lg6>
+        <line-charts/>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import VueApexCharts from 'vue-apexcharts'
-
+import Donuts from '@/components/charts/Donuts.vue'
+import LineCharts from '@/components/charts/Line.vue'
+import Nubank from '@/components/charts/Nubank.vue'
 export default {
   name: 'Dashboard',
   components: {
-    VueApexCharts
+    Donuts,
+    LineCharts,
+    Nubank
   },
   data () {
     return {
-      chartOptions: {
-        chart: {
-          id: 'basic-bar',
-          animations: {
-            speed: 200
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        plotOptions: {
-          bar: {
-            distributed: true
-          }
-        },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995]
-        }
-      },
-      series: [
-        {
-          name: 'series-1',
-          data: [30, 40, 45, 30, 49]
-        }
-      ]
     }
   },
   beforeCreate () {
@@ -63,7 +53,6 @@ export default {
     ...mapActions('auth', ['getDetails']),
     Save () {
       let details = JSON.parse(localStorage.getItem('token'))
-      console.log(details)
       this.getDetails(details)
     }
   }
